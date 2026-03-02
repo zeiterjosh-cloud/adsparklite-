@@ -18,9 +18,12 @@ nav {
 }
 nav strong { font-size: 1.2rem; letter-spacing: 1px; }
 nav a { color: #38bdf8; font-weight: 600; }
+
 .section { display: none; margin-top: 3rem; }
 .section.active { display: block; }
+
 h2 { color: #38bdf8; font-size: 2rem; margin-bottom: 1rem; }
+
 .card-box {
   background: #111827;
   padding: 2rem;
@@ -29,30 +32,54 @@ h2 { color: #38bdf8; font-size: 2rem; margin-bottom: 1rem; }
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   border: 1px solid #1f2937;
 }
+
 .big-button {
   background: #38bdf8;
   color: #0b1120;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   padding: 1rem 1.5rem;
   border-radius: 10px;
   font-weight: bold;
   transition: 0.2s ease;
   margin-top: 1rem;
+  margin-right: 0.5rem;
 }
+
 .big-button:hover {
   background: #0ea5e9;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(56,189,248,0.4);
 }
-textarea, input, select {
-  background: #1e293b;
-  color: #e2e8f0;
-  width: 100%;
-  margin-bottom: 1rem;
+
+.result-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: 1rem;
 }
-.result-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; margin-top: 1rem; }
-.result-value { font-size: 1.1rem; margin-top: 0.3rem; }
-footer { margin-top: 4rem; padding: 2rem 0; text-align: center; opacity: 0.6; }
+
+.result-value {
+  font-size: 1.1rem;
+  margin-top: 0.3rem;
+  min-height: 24px;
+}
+
+.spin {
+  animation: pulse 0.8s ease;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+footer {
+  margin-top: 4rem;
+  padding: 2rem 0;
+  text-align: center;
+  opacity: 0.6;
+}
 </style>
 </head>
 <body>
@@ -63,80 +90,45 @@ footer { margin-top: 4rem; padding: 2rem 0; text-align: center; opacity: 0.6; }
 </ul>
 <ul>
 <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
-<li><a href="#" onclick="showSection('creative')">Creative Engine</a></li>
 <li><a href="#" onclick="showSection('angle')">Angle Generator</a></li>
-<li><a href="#" onclick="showSection('emotion')">Emotion Impact</a></li>
 </ul>
 </nav>
 
 <main class="container">
 
-<!-- Dashboard -->
 <div id="dashboard" class="section active">
-<h2>Welcome to AdSpark Studio</h2>
-<p>Your marketing OS for agencies, startups, and creative thinkers. Generate ideas, campaigns, and angles in one place.</p>
-<ul>
-<li>🎨 Creative Engine</li>
-<li>🎰 Angle Generator</li>
-<li>💖 Emotion Impact Engine</li>
-<li>💾 Save & Export Options</li>
-</ul>
+<h2>Marketing OS for Modern Agencies</h2>
+<p>Spin strategic ad campaigns. Save them. Export them. Scale them.</p>
 </div>
 
-<!-- Creative Engine -->
-<div id="creative" class="section">
-<h2>🎨 Creative Engine</h2>
-<label>Product Name</label>
-<input id="c_product" placeholder="Product Name">
-<label>Target Audience</label>
-<input id="c_audience" placeholder="Audience">
-<label>Platform</label>
-<input id="c_platform" placeholder="Social Media Platform">
-
-<button class="big-button" onclick="generateCreative()">Generate Ideas</button>
-
-<div class="card-box">
-<h3>Hooks</h3>
-<textarea id="c_hooks" rows="4" readonly></textarea>
-<h3>Headlines</h3>
-<textarea id="c_headlines" rows="4" readonly></textarea>
-<h3>CTAs</h3>
-<textarea id="c_ctas" rows="3" readonly></textarea>
-</div>
-</div>
-
-<!-- Angle Generator -->
 <div id="angle" class="section">
 <h2>🎰 Strategic Angle Generator</h2>
-<p>Spin a full campaign blueprint in one click!</p>
-<button class="big-button" onclick="generateAngle()">🎲 Generate Angle</button>
-<div class="card-box">
-<div class="result-label">Hook Style</div><div class="result-value" id="a_hook"></div>
-<div class="result-label">Psychological Trigger</div><div class="result-value" id="a_trigger"></div>
-<div class="result-label">Creative Format</div><div class="result-value" id="a_format"></div>
-<div class="result-label">Offer Structure</div><div class="result-value" id="a_offer"></div>
-<div class="result-label">Targeting Idea</div><div class="result-value" id="a_target"></div>
-<div class="result-label">Funnel Strategy</div><div class="result-value" id="a_funnel"></div>
-</div>
-</div>
 
-<!-- Emotion Impact Engine -->
-<div id="emotion" class="section">
-<h2>💖 Emotion Impact Engine</h2>
-<label>Select Desired Emotion</label>
-<select id="e_emotion">
-<option value="Awe">Awe</option>
-<option value="FOMO">Fear of Missing Out</option>
-<option value="Humor">Humor</option>
-<option value="Empathy">Empathy</option>
-<option value="Urgency">Urgency</option>
-</select>
-<button class="big-button" onclick="generateEmotion()">Generate Emotion-Based Content</button>
-<div class="card-box">
-<div class="result-label">Hook</div><div class="result-value" id="e_hook"></div>
-<div class="result-label">Script</div><div class="result-value" id="e_script"></div>
-<div class="result-label">CTA</div><div class="result-value" id="e_cta"></div>
-<div class="result-label">Hashtags</div><div class="result-value" id="e_tags"></div>
+<button class="big-button" onclick="generateAngle()">🎲 Generate Angle</button>
+<button class="big-button" onclick="saveAngle()">💾 Save</button>
+<button class="big-button" onclick="exportAngle()">⬇ Export</button>
+<button class="big-button" onclick="copyAngle()">📋 Copy</button>
+
+<div class="card-box" id="angleCard">
+
+<div class="result-label">Hook Style</div>
+<div class="result-value" id="a_hook"></div>
+
+<div class="result-label">Psychological Trigger</div>
+<div class="result-value" id="a_trigger"></div>
+
+<div class="result-label">Creative Format</div>
+<div class="result-value" id="a_format"></div>
+
+<div class="result-label">Offer Structure</div>
+<div class="result-value" id="a_offer"></div>
+
+<div class="result-label">Targeting Strategy</div>
+<div class="result-value" id="a_target"></div>
+
+<div class="result-label">Funnel Direction</div>
+<div class="result-value" id="a_funnel"></div>
+
 </div>
 </div>
 
@@ -147,62 +139,61 @@ AdSpark Studio • Your Lightweight Marketing Brain
 </footer>
 
 <script>
-// Navigation
 function showSection(id){
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-// Creative Engine
-function generateCreative(){
-  let product = document.getElementById("c_product").value || "Product";
-  let audience = document.getElementById("c_audience").value || "Audience";
-  let platform = document.getElementById("c_platform").value || "Platform";
-  document.getElementById("c_hooks").value =
-    `1. How ${product} changes life for ${audience}\n2. The secret ${audience} don’t know\n3. Why everyone is choosing ${product}`;
-  document.getElementById("c_headlines").value =
-    `1. ${product}: The Future is Here\n2. Designed for ${audience}\n3. Upgrade Today`;
-  document.getElementById("c_ctas").value =
-    "Buy Now\nLearn More\nGet Started Today";
-}
+function randomItem(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 
-// Angle Generator
-function randomItem(arr){return arr[Math.floor(Math.random()*arr.length)];}
 function generateAngle(){
-  const hooks = ["Contrarian Claim","Transformation Story","Problem-Solution","Authority Statement","Curiosity Hook","Bold Promise"];
-  const triggers = ["FOMO","Status Elevation","Urgency","Belonging","Security","Achievement Drive"];
-  const formats = ["UGC Selfie","Before & After","Testimonial Montage","Founder Story","Educational Reel","Trend Remix"];
-  const offers = ["Bonus Stack","Limited-Time Access","Bundle Upgrade","Risk-Free Guarantee","Flash Incentive"];
-  const targeting = ["Cold Interest","Lookalike of Converters","Retarget Video Viewers","Website Visitors","Engaged Followers"];
-  const funnels = ["Hook Test → Scale Winner","Cold → Lead Magnet → Nurture","Awareness → Retarget → Convert","Content First → DM Funnel","Launch Countdown"];
-  document.getElementById("a_hook").innerText = randomItem(hooks);
-  document.getElementById("a_trigger").innerText = randomItem(triggers);
-  document.getElementById("a_format").innerText = randomItem(formats);
-  document.getElementById("a_offer").innerText = randomItem(offers);
-  document.getElementById("a_target").innerText = randomItem(targeting);
-  document.getElementById("a_funnel").innerText = randomItem(funnels);
+  const hooks=["Contrarian Claim","Transformation Story","Problem-Solution","Authority Statement","Curiosity Hook","Bold Promise"];
+  const triggers=["FOMO","Status Elevation","Urgency","Belonging","Security","Achievement Drive"];
+  const formats=["UGC Selfie","Before & After","Testimonial Montage","Founder Story","Educational Reel","Trend Remix"];
+  const offers=["Bonus Stack","Limited-Time Access","Bundle Upgrade","Risk-Free Guarantee","Flash Incentive"];
+  const targeting=["Cold Interest","Lookalike of Converters","Retarget Video Viewers","Website Visitors","Engaged Followers"];
+  const funnels=["Hook Test → Scale Winner","Cold → Lead Magnet → Nurture","Awareness → Retarget → Convert","Content → DM Funnel","Launch Countdown"];
+
+  const card=document.getElementById("angleCard");
+  card.classList.remove("spin");
+  void card.offsetWidth;
+  card.classList.add("spin");
+
+  document.getElementById("a_hook").innerText=randomItem(hooks);
+  document.getElementById("a_trigger").innerText=randomItem(triggers);
+  document.getElementById("a_format").innerText=randomItem(formats);
+  document.getElementById("a_offer").innerText=randomItem(offers);
+  document.getElementById("a_target").innerText=randomItem(targeting);
+  document.getElementById("a_funnel").innerText=randomItem(funnels);
 }
 
-// Emotion Impact Engine
-function generateEmotion(){
-  const emotion = document.getElementById("e_emotion").value;
-  let hook = "", script = "", cta = "", tags="";
-  switch(emotion){
-    case "Awe":
-      hook="Experience the unbelievable!"; script="See how this transforms your life."; cta="Try It Today"; tags="#amazing #wow #transformation"; break;
-    case "FOMO":
-      hook="Don't miss out!"; script="Everyone is grabbing this offer."; cta="Act Fast"; tags="#limited #exclusive #hurry"; break;
-    case "Humor":
-      hook="Laugh your way to success"; script="This product is fun and effective."; cta="Join the Fun"; tags="#fun #lol #humor"; break;
-    case "Empathy":
-      hook="We understand your struggle"; script="This is designed for you."; cta="See How It Helps"; tags="#empathy #care #solution"; break;
-    case "Urgency":
-      hook="Time is running out!"; script="Act before it's gone."; cta="Get It Now"; tags="#now #hurry #limited"; break;
-  }
-  document.getElementById("e_hook").innerText=hook;
-  document.getElementById("e_script").innerText=script;
-  document.getElementById("e_cta").innerText=cta;
-  document.getElementById("e_tags").innerText=tags;
+function getAngleText(){
+  return `
+Hook: ${a_hook.innerText}
+Trigger: ${a_trigger.innerText}
+Format: ${a_format.innerText}
+Offer: ${a_offer.innerText}
+Targeting: ${a_target.innerText}
+Funnel: ${a_funnel.innerText}
+`;
+}
+
+function saveAngle(){
+  localStorage.setItem("savedAngle", getAngleText());
+  alert("Angle saved locally.");
+}
+
+function exportAngle(){
+  const blob=new Blob([getAngleText()],{type:"text/plain"});
+  const link=document.createElement("a");
+  link.href=URL.createObjectURL(blob);
+  link.download="adspark-angle.txt";
+  link.click();
+}
+
+function copyAngle(){
+  navigator.clipboard.writeText(getAngleText());
+  alert("Copied to clipboard.");
 }
 </script>
 
