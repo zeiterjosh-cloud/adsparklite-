@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdSpark Lite</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+<style>
+body {
+    background: #f7f7f7;
+    color: #222;
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+}
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+main {
+    max-width: 600px;
+    margin: auto;
+}
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+button {
+    background: #00c6ff;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+button:hover {
+    background: #007bb5;
+}
+.output-section {
+    margin-top: 2rem;
+}
+.output-section h3 {
+    margin-top: 1rem;
+}
+.copy-btn {
+    margin-top: 0.5rem;
+    background: #ff8c00;
+}
+.copy-btn:hover {
+    background: #cc7000;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>AdSpark Lite 🚀</h1>
+    <p>Generate ad hooks, UGC scripts, headlines & CTAs instantly!</p>
+</header>
+
+<main>
+    <label>Product Name:</label>
+    <input type="text" id="product" placeholder="e.g., Magic Coffee Mug">
+
+    <label>Target Audience:</label>
+    <input type="text" id="audience" placeholder="e.g., College Students">
+
+    <label>Price:</label>
+    <input type="text" id="price" placeholder="e.g., $29">
+
+    <label>Platform:</label>
+    <input type="text" id="platform" placeholder="e.g., TikTok">
+
+    <button onclick="generateAds()">Generate Ad Ideas</button>
+
+    <div class="output-section">
+        <h3>Hooks</h3>
+        <textarea id="hooks" readonly></textarea>
+        <button class="copy-btn" onclick="copyToClipboard('hooks')">Copy Hooks</button>
+
+        <h3>UGC Scripts</h3>
+        <textarea id="scripts" readonly></textarea>
+        <button class="copy-btn" onclick="copyToClipboard('scripts')">Copy Scripts</button>
+
+        <h3>Headlines</h3>
+        <textarea id="headlines" readonly></textarea>
+        <button class="copy-btn" onclick="copyToClipboard('headlines')">Copy Headlines</button>
+
+        <h3>CTAs</h3>
+        <textarea id="ctas" readonly></textarea>
+        <button class="copy-btn" onclick="copyToClipboard('ctas')">Copy CTAs</button>
+    </div>
+</main>
+
+<script>
+function generateAds() {
+    const product = document.getElementById('product').value || "Amazing Product";
+    const audience = document.getElementById('audience').value || "Everyone";
+    const price = document.getElementById('price').value || "$49";
+    const platform = document.getElementById('platform').value || "Social Media";
+
+    // Placeholder outputs - in real AI, replace with GPT/DALLE integration
+    const hooks = Array.from({length:20}, (_,i)=>`${i+1}. Discover how ${product} changes ${audience}'s life on ${platform}!`).join("\n");
+    const scripts = Array.from({length:5}, (_,i)=>`${i+1}. [UGC Script] ${audience} try ${product} for just ${price} and love it!`).join("\n");
+    const headlines = Array.from({length:5}, (_,i)=>`${i+1}. ${product} is the game-changer for ${audience}`).join("\n");
+    const ctas = Array.from({length:3}, (_,i)=>`${i+1}. Buy Now | Learn More | Get Yours Today`).join("\n");
+
+    document.getElementById('hooks').value = hooks;
+    document.getElementById('scripts').value = scripts;
+    document.getElementById('headlines').value = headlines;
+    document.getElementById('ctas').value = ctas;
+}
+
+function copyToClipboard(id) {
+    const text = document.getElementById(id);
+    text.select();
+    text.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    alert(`${id.charAt(0).toUpperCase() + id.slice(1)} copied to clipboard!`);
+}
+</script>
+
+</body>
+</html>
