@@ -3,156 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdSpark Lite 🚀</title>
+<title>AdSpark Studio</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
 <style>
-body {background:#f7f7f7; color:#222; font-family:Arial,sans-serif; padding:1rem;}
-header{text-align:center; margin-bottom:2rem;}
-main{max-width:700px; margin:auto;}
-textarea{width:100%; height:120px; margin-bottom:1rem; padding:.5rem; font-size:0.95rem; resize:none;}
-button{background:#00c6ff;color:#fff;border:none;padding:.8rem 1.2rem;cursor:pointer;margin:.5rem 0;}
-button:hover{background:#007bb5;}
-.copy-btn{background:#ff8c00;}
-.copy-btn:hover{background:#cc7000;}
-.tab-buttons{display:flex; flex-wrap:wrap; margin-bottom:1rem; gap:0.2rem;}
-.tab-buttons button{flex:1;}
-.tab-content{display:none;}
-.tab-content.active{display:block;}
+body {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+nav {
+  background: #111827;
+  border-bottom: 1px solid #1f2937;
+}
+nav a {
+  color: #38bdf8;
+  font-weight: bold;
+}
+button {
+  background: #38bdf8;
+  border: none;
+}
+button:hover {
+  background: #0ea5e9;
+}
+.section {
+  display: none;
+  margin-top: 2rem;
+}
+.section.active {
+  display: block;
+}
+textarea {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+input, select {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+h2 {
+  color: #38bdf8;
+}
 </style>
 </head>
 <body>
 
-<header>
-<h1>AdSpark Lite 🚀</h1>
-<p>Generate ad hooks, UGC scripts, headlines, CTAs & hashtags instantly!</p>
-</header>
+<nav class="container-fluid">
+<ul>
+<li><strong>AdSpark Studio 🚀</strong></li>
+</ul>
+<ul>
+<li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+<li><a href="#" onclick="showSection('creative')">Creative Engine</a></li>
+<li><a href="#" onclick="showSection('offer')">Offer Builder</a></li>
+<li><a href="#" onclick="showSection('strategy')" role="button">Strategy Lab</a></li>
+</ul>
+</nav>
 
-<main>
-<label>Product Name:</label>
-<input type="text" id="product" placeholder="e.g., Magic Coffee Mug">
+<main class="container">
 
-<label>Target Audience:</label>
-<input type="text" id="audience" placeholder="e.g., College Students">
-
-<label>Price:</label>
-<input type="text" id="price" placeholder="e.g., $29">
-
-<label>Platform:</label>
-<input type="text" id="platform" placeholder="e.g., TikTok">
-
-<label>Tone / Style:</label>
-<select id="tone">
-<option value="funny">Funny 😆</option>
-<option value="emotional">Emotional ❤️</option>
-<option value="urgent">Urgent ⚡</option>
-<option value="educational">Educational 📚</option>
-<option value="trendy">Trendy 🔥</option>
-</select>
-
-<button onclick="generateAds()">Generate Ad Ideas</button>
-<button onclick="copyAll()">Copy All Content</button>
-
-<div class="tab-buttons">
-<button onclick="showTab('hooks')">Hooks</button>
-<button onclick="showTab('scripts')">UGC Scripts</button>
-<button onclick="showTab('headlines')">Headlines</button>
-<button onclick="showTab('ctas')">CTAs</button>
-<button onclick="showTab('hashtags')">Hashtags</button>
+<!-- DASHBOARD -->
+<div id="dashboard" class="section active">
+<h2>Welcome</h2>
+<p>Your marketing command center. Generate creative ideas, build offers, and plan campaigns — all in one place.</p>
+<ul>
+<li>🎨 Creative Engine</li>
+<li>💰 Offer Builder</li>
+<li>📊 Strategy Lab</li>
+</ul>
 </div>
 
-<div class="tab-content" id="hooks">
+<!-- CREATIVE ENGINE -->
+<div id="creative" class="section">
+<h2>Creative Engine</h2>
+
+<label>Product</label>
+<input id="c_product">
+
+<label>Audience</label>
+<input id="c_audience">
+
+<label>Platform</label>
+<input id="c_platform">
+
+<button onclick="generateCreative()">Generate Ideas</button>
+
 <h3>Hooks</h3>
-<textarea readonly></textarea>
-<button class="copy-btn" onclick="copyToClipboard('hooks')">Copy Hooks</button>
-</div>
+<textarea id="c_hooks" rows="6" readonly></textarea>
 
-<div class="tab-content" id="scripts">
-<h3>UGC Scripts</h3>
-<textarea readonly></textarea>
-<button class="copy-btn" onclick="copyToClipboard('scripts')">Copy Scripts</button>
-</div>
-
-<div class="tab-content" id="headlines">
 <h3>Headlines</h3>
-<textarea readonly></textarea>
-<button class="copy-btn" onclick="copyToClipboard('headlines')">Copy Headlines</button>
-</div>
+<textarea id="c_headlines" rows="6" readonly></textarea>
 
-<div class="tab-content" id="ctas">
 <h3>CTAs</h3>
-<textarea readonly></textarea>
-<button class="copy-btn" onclick="copyToClipboard('ctas')">Copy CTAs</button>
+<textarea id="c_ctas" rows="4" readonly></textarea>
+
 </div>
 
-<div class="tab-content" id="hashtags">
-<h3>Hashtags</h3>
-<textarea readonly></textarea>
-<button class="copy-btn" onclick="copyToClipboard('hashtags')">Copy Hashtags</button>
+<!-- OFFER BUILDER -->
+<div id="offer" class="section">
+<h2>Offer Builder</h2>
+
+<label>Product</label>
+<input id="o_product">
+
+<label>Price</label>
+<input id="o_price">
+
+<button onclick="generateOffer()">Generate Offer Ideas</button>
+
+<h3>Discount Ideas</h3>
+<textarea id="o_discount" rows="5" readonly></textarea>
+
+<h3>Bonus Stack Ideas</h3>
+<textarea id="o_bonus" rows="5" readonly></textarea>
+
+<h3>Scarcity Angles</h3>
+<textarea id="o_scarcity" rows="5" readonly></textarea>
+
+</div>
+
+<!-- STRATEGY LAB -->
+<div id="strategy" class="section">
+<h2>Strategy Lab</h2>
+
+<label>Budget</label>
+<input id="s_budget">
+
+<label>Platform</label>
+<input id="s_platform">
+
+<button onclick="generateStrategy()">Generate Strategy</button>
+
+<h3>Ad Angles</h3>
+<textarea id="s_angles" rows="5" readonly></textarea>
+
+<h3>Budget Split</h3>
+<textarea id="s_budget_split" rows="4" readonly></textarea>
+
+<h3>7-Day Launch Plan</h3>
+<textarea id="s_launch" rows="6" readonly></textarea>
+
 </div>
 
 </main>
 
 <script>
-// Tab switching
-function showTab(tabId){
-document.querySelectorAll('.tab-content').forEach(tc=>tc.classList.remove('active'));
-document.getElementById(tabId).classList.add('active');
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 
-// Main generator
-function generateAds(){
-const product=document.getElementById('product').value || "Amazing Product";
-const audience=document.getElementById('audience').value || "Everyone";
-const price=document.getElementById('price').value || "$49";
-const platform=document.getElementById('platform').value || "Social Media";
-const tone=document.getElementById('tone').value || "funny";
+/* CREATIVE */
+function generateCreative(){
+  let product = document.getElementById("c_product").value || "Your Product";
+  let audience = document.getElementById("c_audience").value || "Your Audience";
+  let platform = document.getElementById("c_platform").value || "Social Media";
 
-// Simple tone-based emoji mapping
-const toneEmoji = {funny:"😆", emotional:"❤️", urgent:"⚡", educational:"📚", trendy:"🔥"};
-const emoji = toneEmoji[tone] || "";
+  document.getElementById("c_hooks").value =
+  "1. Discover how " + product + " changes " + audience + "'s life on " + platform + "!\n" +
+  "2. The secret " + audience + " don’t want you to know about.\n" +
+  "3. Why everyone is switching to " + product + ".";
 
-// Generate content arrays
-const hooks = Array.from({length:20},(_,i)=>`${i+1}. ${emoji} Discover how ${product} changes ${audience}'s life on ${platform}!`).join("\n");
-const scripts = Array.from({length:8},(_,i)=>`${i+1}. ${emoji} [UGC Script] ${audience} try ${product} for just ${price} and love it!`).join("\n");
-const headlines = Array.from({length:8},(_,i)=>`${i+1}. ${emoji} ${product} is the ultimate game-changer for ${audience}`).join("\n");
-const ctas = Array.from({length:5},(_,i)=>`${i+1}. Buy Now | Learn More | Get Yours Today`).join("\n");
-const hashtags = ["#Trending","#MustHave","#Viral","#Ad","#Marketing","#Sale","#Deal","#Limited","#ShopNow","#Hot"].join(" ");
+  document.getElementById("c_headlines").value =
+  "1. The Future of " + product + " is Here.\n" +
+  "2. " + product + ": Built for " + audience + ".\n" +
+  "3. Upgrade Your Experience Today.";
 
-// Set outputs
-document.querySelector('#hooks textarea').value = hooks;
-document.querySelector('#scripts textarea').value = scripts;
-document.querySelector('#headlines textarea').value = headlines;
-document.querySelector('#ctas textarea').value = ctas;
-document.querySelector('#hashtags textarea').value = hashtags;
-
-// Show first tab
-showTab('hooks');
+  document.getElementById("c_ctas").value =
+  "Buy Now\nLearn More\nGet Started Today";
 }
 
-// Copy individual section
-function copyToClipboard(id){
-const text = document.querySelector(`#${id} textarea`);
-text.select();
-text.setSelectionRange(0,99999);
-document.execCommand("copy");
-alert(`${id.charAt(0).toUpperCase()+id.slice(1)} copied!`);
+/* OFFER */
+function generateOffer(){
+  let product = document.getElementById("o_product").value || "Your Product";
+  let price = document.getElementById("o_price").value || "$100";
+
+  document.getElementById("o_discount").value =
+  "1. 20% Off Launch Special\n2. Buy One Get One 50% Off\n3. Limited Time $10 Off";
+
+  document.getElementById("o_bonus").value =
+  "1. Free Guide Included\n2. Bonus Template Pack\n3. VIP Support Upgrade";
+
+  document.getElementById("o_scarcity").value =
+  "1. Only 50 Spots Available\n2. Offer Ends in 48 Hours\n3. Exclusive Early Access";
 }
 
-// Copy all content at once
-function copyAll(){
-const allContent = [
-document.querySelector('#hooks textarea')?.value || '',
-document.querySelector('#scripts textarea')?.value || '',
-document.querySelector('#headlines textarea')?.value || '',
-document.querySelector('#ctas textarea')?.value || '',
-document.querySelector('#hashtags textarea')?.value || ''
-].join("\n\n");
-try {
-navigator.clipboard.writeText(allContent);
-alert("All content copied!");
-} catch(e){
-alert("Clipboard not supported. Copy manually:\n\n" + allContent);
-}
+/* STRATEGY */
+function generateStrategy(){
+  let budget = document.getElementById("s_budget").value || "$1000";
+  let platform = document.getElementById("s_platform").value || "Facebook";
+
+  document.getElementById("s_angles").value =
+  "1. Problem-Solution Angle\n2. Testimonial Angle\n3. Lifestyle Transformation Angle";
+
+  document.getElementById("s_budget_split").value =
+  "60% Testing Campaigns\n30% Retargeting\n10% Creative Testing\nTotal Budget: " + budget;
+
+  document.getElementById("s_launch").value =
+  "Day 1: Launch 3 Ad Variations\nDay 2-3: Monitor CTR\nDay 4: Kill Lowest Performer\nDay 5-7: Scale Winner";
 }
 </script>
 
