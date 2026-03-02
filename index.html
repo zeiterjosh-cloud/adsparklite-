@@ -3,26 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdSpark Lite</title>
+<title>AdSpark Lite 🚀</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 <style>
 body {background:#f7f7f7; color:#222; font-family:Arial,sans-serif; padding:1rem;}
 header{text-align:center; margin-bottom:2rem;}
-main{max-width:600px; margin:auto;}
-textarea{width:100%; height:100px; margin-bottom:1rem;}
-button{background:#00c6ff;color:#fff;border:none;padding:.8rem 1.2rem;cursor:pointer;margin-bottom:1rem;}
+main{max-width:650px; margin:auto;}
+textarea{width:100%; height:120px; margin-bottom:1rem; padding:.5rem; font-size:0.95rem;}
+button{background:#00c6ff;color:#fff;border:none;padding:.8rem 1.2rem;cursor:pointer;margin:.5rem 0;}
 button:hover{background:#007bb5;}
 .output-section{margin-top:2rem;}
 .output-section h3{margin-top:1rem;}
-.copy-btn{margin-top:.5rem; background:#ff8c00;}
+.copy-btn{background:#ff8c00;}
 .copy-btn:hover{background:#cc7000;}
+.tab-buttons{display:flex; flex-wrap:wrap; margin-bottom:1rem;}
+.tab-buttons button{flex:1; margin:0.2rem;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
 </style>
 </head>
 <body>
 
 <header>
 <h1>AdSpark Lite 🚀</h1>
-<p>Generate ad hooks, UGC scripts, headlines & CTAs instantly!</p>
+<p>Generate ad hooks, scripts, headlines, CTAs & hashtags instantly!</p>
 </header>
 
 <main>
@@ -39,50 +43,104 @@ button:hover{background:#007bb5;}
 <input type="text" id="platform" placeholder="e.g., TikTok">
 
 <button onclick="generateAds()">Generate Ad Ideas</button>
+<button onclick="copyAll()">Copy All Content</button>
+
+<div class="tab-buttons">
+<button onclick="showTab('hooks')">Hooks</button>
+<button onclick="showTab('scripts')">UGC Scripts</button>
+<button onclick="showTab('headlines')">Headlines</button>
+<button onclick="showTab('ctas')">CTAs</button>
+<button onclick="showTab('hashtags')">Hashtags</button>
+</div>
 
 <div class="output-section">
+<div id="hooks" class="tab-content">
 <h3>Hooks</h3>
-<textarea id="hooks" readonly></textarea>
+<textarea readonly></textarea>
 <button class="copy-btn" onclick="copyToClipboard('hooks')">Copy Hooks</button>
+</div>
 
+<div id="scripts" class="tab-content">
 <h3>UGC Scripts</h3>
-<textarea id="scripts" readonly></textarea>
+<textarea readonly></textarea>
 <button class="copy-btn" onclick="copyToClipboard('scripts')">Copy Scripts</button>
+</div>
 
+<div id="headlines" class="tab-content">
 <h3>Headlines</h3>
-<textarea id="headlines" readonly></textarea>
+<textarea readonly></textarea>
 <button class="copy-btn" onclick="copyToClipboard('headlines')">Copy Headlines</button>
+</div>
 
+<div id="ctas" class="tab-content">
 <h3>CTAs</h3>
-<textarea id="ctas" readonly></textarea>
+<textarea readonly></textarea>
 <button class="copy-btn" onclick="copyToClipboard('ctas')">Copy CTAs</button>
 </div>
+
+<div id="hashtags" class="tab-content">
+<h3>Hashtags</h3>
+<textarea readonly></textarea>
+<button class="copy-btn" onclick="copyToClipboard('hashtags')">Copy Hashtags</button>
+</div>
+</div>
+
 </main>
 
 <script>
+function showTab(tabId){
+document.querySelectorAll('.tab-content').forEach(tc=>tc.classList.remove('active'));
+document.getElementById(tabId).classList.add('active');
+}
+
 function generateAds(){
 const product=document.getElementById('product').value||"Amazing Product";
 const audience=document.getElementById('audience').value||"Everyone";
 const price=document.getElementById('price').value||"$49";
 const platform=document.getElementById('platform').value||"Social Media";
 
-const hooks=Array.from({length:20},(_,i)=>`${i+1}. Discover how ${product} changes ${audience}'s life on ${platform}!`).join("\n");
-const scripts=Array.from({length:5},(_,i)=>`${i+1}. [UGC Script] ${audience} try ${product} for just ${price} and love it!`).join("\n");
-const headlines=Array.from({length:5},(_,i)=>`${i+1}. ${product} is the game-changer for ${audience}`).join("\n");
-const ctas=Array.from({length:3},(_,i)=>`${i+1}. Buy Now | Learn More | Get Yours Today`).join("\n");
+// Hooks
+const hooks=Array.from({length:30},(_,i)=>`${i+1}. 🚀 Discover how ${product} transforms ${audience}'s life on ${platform}!`).join("\n");
+document.querySelector('#hooks textarea').value=hooks;
 
-document.getElementById('hooks').value=hooks;
-document.getElementById('scripts').value=scripts;
-document.getElementById('headlines').value=headlines;
-document.getElementById('ctas').value=ctas;
+// Scripts
+const scripts=Array.from({length:10},(_,i)=>`${i+1}. 🎬 [UGC Script] ${audience} try ${product} for just ${price} and love it!`).join("\n");
+document.querySelector('#scripts textarea').value=scripts;
+
+// Headlines
+const headlines=Array.from({length:10},(_,i)=>`${i+1}. 🔥 ${product} is the ultimate game-changer for ${audience}`).join("\n");
+document.querySelector('#headlines textarea').value=headlines;
+
+// CTAs
+const ctas=Array.from({length:5},(_,i)=>`${i+1}. Buy Now | Learn More | Get Yours Today`).join("\n");
+document.querySelector('#ctas textarea').value=ctas;
+
+// Hashtags
+const hashtags=["#Trending","#MustHave","#Viral","#Ad","#Marketing","#Sale","#Deal","#Limited","#ShopNow","#Hot"];
+document.querySelector('#hashtags textarea').value=hashtags.join(" ");
+showTab('hooks'); // show first tab by default
 }
 
+// Copy individual tab
 function copyToClipboard(id){
-const text=document.getElementById(id);
+const text=document.querySelector(`#${id} textarea`);
 text.select();
 text.setSelectionRange(0,99999);
 document.execCommand("copy");
 alert(`${id.charAt(0).toUpperCase()+id.slice(1)} copied to clipboard!`);
+}
+
+// Copy all content at once
+function copyAll(){
+const allContent=[
+document.querySelector('#hooks textarea').value,
+document.querySelector('#scripts textarea').value,
+document.querySelector('#headlines textarea').value,
+document.querySelector('#ctas textarea').value,
+document.querySelector('#hashtags textarea').value
+].join("\n\n");
+navigator.clipboard.writeText(allContent);
+alert("All content copied to clipboard!");
 }
 </script>
 
