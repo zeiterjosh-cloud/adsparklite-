@@ -22,6 +22,7 @@ nav a {
 button {
   background: #38bdf8;
   border: none;
+  font-weight: bold;
 }
 button:hover {
   background: #0ea5e9;
@@ -33,16 +34,22 @@ button:hover {
 .section.active {
   display: block;
 }
-textarea {
-  background: #1e293b;
-  color: #e2e8f0;
-}
-input, select {
+textarea, input, select {
   background: #1e293b;
   color: #e2e8f0;
 }
 h2 {
   color: #38bdf8;
+}
+.card-box {
+  background: #1e293b;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+.big-button {
+  font-size: 1.2rem;
+  padding: 1rem;
 }
 </style>
 </head>
@@ -54,9 +61,10 @@ h2 {
 </ul>
 <ul>
 <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
-<li><a href="#" onclick="showSection('creative')">Creative Engine</a></li>
-<li><a href="#" onclick="showSection('offer')">Offer Builder</a></li>
-<li><a href="#" onclick="showSection('strategy')" role="button">Strategy Lab</a></li>
+<li><a href="#" onclick="showSection('creative')">Creative</a></li>
+<li><a href="#" onclick="showSection('offer')">Offer</a></li>
+<li><a href="#" onclick="showSection('strategy')">Strategy</a></li>
+<li><a href="#" onclick="showSection('angle')" role="button">🎰 Angle</a></li>
 </ul>
 </nav>
 
@@ -65,84 +73,41 @@ h2 {
 <!-- DASHBOARD -->
 <div id="dashboard" class="section active">
 <h2>Welcome</h2>
-<p>Your marketing command center. Generate creative ideas, build offers, and plan campaigns — all in one place.</p>
+<p>Your modern marketing command center.</p>
 <ul>
 <li>🎨 Creative Engine</li>
 <li>💰 Offer Builder</li>
 <li>📊 Strategy Lab</li>
+<li>🎰 Angle Generator</li>
 </ul>
 </div>
 
-<!-- CREATIVE ENGINE -->
-<div id="creative" class="section">
-<h2>Creative Engine</h2>
+<!-- ANGLE GENERATOR -->
+<div id="angle" class="section">
+<h2>🎰 Angle Generator</h2>
+<p>Spin up a fresh strategic ad angle in one click.</p>
 
-<label>Product</label>
-<input id="c_product">
+<button class="big-button" onclick="generateAngle()">🎲 Generate New Ad Angle</button>
 
-<label>Audience</label>
-<input id="c_audience">
+<div class="card-box">
+<h3>🎯 Hook Style</h3>
+<p id="a_hook"></p>
 
-<label>Platform</label>
-<input id="c_platform">
+<h3>🧠 Psychological Trigger</h3>
+<p id="a_trigger"></p>
 
-<button onclick="generateCreative()">Generate Ideas</button>
+<h3>🎬 Creative Format</h3>
+<p id="a_format"></p>
 
-<h3>Hooks</h3>
-<textarea id="c_hooks" rows="6" readonly></textarea>
+<h3>🎁 Offer Twist</h3>
+<p id="a_offer"></p>
 
-<h3>Headlines</h3>
-<textarea id="c_headlines" rows="6" readonly></textarea>
+<h3>👥 Targeting Idea</h3>
+<p id="a_target"></p>
 
-<h3>CTAs</h3>
-<textarea id="c_ctas" rows="4" readonly></textarea>
-
+<h3>🚀 Funnel Strategy</h3>
+<p id="a_funnel"></p>
 </div>
-
-<!-- OFFER BUILDER -->
-<div id="offer" class="section">
-<h2>Offer Builder</h2>
-
-<label>Product</label>
-<input id="o_product">
-
-<label>Price</label>
-<input id="o_price">
-
-<button onclick="generateOffer()">Generate Offer Ideas</button>
-
-<h3>Discount Ideas</h3>
-<textarea id="o_discount" rows="5" readonly></textarea>
-
-<h3>Bonus Stack Ideas</h3>
-<textarea id="o_bonus" rows="5" readonly></textarea>
-
-<h3>Scarcity Angles</h3>
-<textarea id="o_scarcity" rows="5" readonly></textarea>
-
-</div>
-
-<!-- STRATEGY LAB -->
-<div id="strategy" class="section">
-<h2>Strategy Lab</h2>
-
-<label>Budget</label>
-<input id="s_budget">
-
-<label>Platform</label>
-<input id="s_platform">
-
-<button onclick="generateStrategy()">Generate Strategy</button>
-
-<h3>Ad Angles</h3>
-<textarea id="s_angles" rows="5" readonly></textarea>
-
-<h3>Budget Split</h3>
-<textarea id="s_budget_split" rows="4" readonly></textarea>
-
-<h3>7-Day Launch Plan</h3>
-<textarea id="s_launch" rows="6" readonly></textarea>
-
 </div>
 
 </main>
@@ -153,54 +118,70 @@ function showSection(id) {
   document.getElementById(id).classList.add('active');
 }
 
-/* CREATIVE */
-function generateCreative(){
-  let product = document.getElementById("c_product").value || "Your Product";
-  let audience = document.getElementById("c_audience").value || "Your Audience";
-  let platform = document.getElementById("c_platform").value || "Social Media";
-
-  document.getElementById("c_hooks").value =
-  "1. Discover how " + product + " changes " + audience + "'s life on " + platform + "!\n" +
-  "2. The secret " + audience + " don’t want you to know about.\n" +
-  "3. Why everyone is switching to " + product + ".";
-
-  document.getElementById("c_headlines").value =
-  "1. The Future of " + product + " is Here.\n" +
-  "2. " + product + ": Built for " + audience + ".\n" +
-  "3. Upgrade Your Experience Today.";
-
-  document.getElementById("c_ctas").value =
-  "Buy Now\nLearn More\nGet Started Today";
+function randomItem(arr){
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
-/* OFFER */
-function generateOffer(){
-  let product = document.getElementById("o_product").value || "Your Product";
-  let price = document.getElementById("o_price").value || "$100";
+function generateAngle(){
+  const hooks = [
+    "Contrarian Perspective",
+    "Problem-Solution",
+    "Transformation Story",
+    "Authority-Based Claim",
+    "Curiosity Gap",
+    "Social Proof Angle"
+  ];
 
-  document.getElementById("o_discount").value =
-  "1. 20% Off Launch Special\n2. Buy One Get One 50% Off\n3. Limited Time $10 Off";
+  const triggers = [
+    "Fear of Missing Out",
+    "Status Elevation",
+    "Urgency",
+    "Belonging",
+    "Security & Certainty",
+    "Achievement Motivation"
+  ];
 
-  document.getElementById("o_bonus").value =
-  "1. Free Guide Included\n2. Bonus Template Pack\n3. VIP Support Upgrade";
+  const formats = [
+    "UGC Selfie Video",
+    "Testimonial Compilation",
+    "Before & After Visual",
+    "Educational Breakdown",
+    "Founder Story Clip",
+    "Trend Remix Style"
+  ];
 
-  document.getElementById("o_scarcity").value =
-  "1. Only 50 Spots Available\n2. Offer Ends in 48 Hours\n3. Exclusive Early Access";
-}
+  const offers = [
+    "Bonus Stack Instead of Discount",
+    "Limited Early Access",
+    "Bundle Upgrade",
+    "Risk-Free Guarantee",
+    "Flash Discount Window",
+    "VIP Exclusive Version"
+  ];
 
-/* STRATEGY */
-function generateStrategy(){
-  let budget = document.getElementById("s_budget").value || "$1000";
-  let platform = document.getElementById("s_platform").value || "Facebook";
+  const targeting = [
+    "Cold Interest-Based Audience",
+    "Lookalike of Past Buyers",
+    "Retarget Website Visitors",
+    "Engaged Social Followers",
+    "Recent Video Viewers",
+    "High-Intent Search Users"
+  ];
 
-  document.getElementById("s_angles").value =
-  "1. Problem-Solution Angle\n2. Testimonial Angle\n3. Lifestyle Transformation Angle";
+  const funnels = [
+    "Hook Test → Kill Losers → Scale Winner",
+    "Cold Traffic → Lead Magnet → Email Nurture",
+    "Awareness → Retargeting → Conversion Push",
+    "Content First → DM Funnel",
+    "Launch Week Countdown Funnel"
+  ];
 
-  document.getElementById("s_budget_split").value =
-  "60% Testing Campaigns\n30% Retargeting\n10% Creative Testing\nTotal Budget: " + budget;
-
-  document.getElementById("s_launch").value =
-  "Day 1: Launch 3 Ad Variations\nDay 2-3: Monitor CTR\nDay 4: Kill Lowest Performer\nDay 5-7: Scale Winner";
+  document.getElementById("a_hook").innerText = randomItem(hooks);
+  document.getElementById("a_trigger").innerText = randomItem(triggers);
+  document.getElementById("a_format").innerText = randomItem(formats);
+  document.getElementById("a_offer").innerText = randomItem(offers);
+  document.getElementById("a_target").innerText = randomItem(targeting);
+  document.getElementById("a_funnel").innerText = randomItem(funnels);
 }
 </script>
 
