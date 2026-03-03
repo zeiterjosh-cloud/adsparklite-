@@ -1,114 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marketing Website</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  body { font-family: 'Montserrat', sans-serif; margin:0; padding:0; color:#333; }
-  header { display:flex; justify-content:space-between; align-items:center; padding:20px 50px; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-  header nav a { margin-left:20px; text-decoration:none; color:#333; font-weight:500; }
-  header .cta { padding:10px 20px; background:#1e90ff; color:white; border-radius:5px; text-decoration:none; }
-  
-  .hero { display:flex; flex-wrap:wrap; align-items:center; padding:100px 50px; background:#f5f8ff; }
-  .hero-text { flex:1; min-width:300px; }
-  .hero-text h1 { font-size:48px; margin:0 0 20px; }
-  .hero-text p { font-size:20px; margin:0 0 30px; }
-  .hero-text .btn { padding:15px 30px; background:#1e90ff; color:white; border:none; border-radius:5px; font-size:16px; cursor:pointer; }
-  .hero-img { flex:1; min-width:300px; text-align:center; }
-  .hero-img img { max-width:100%; border-radius:10px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colorful Marketing Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+    body { scroll-behavior: smooth; }
 
-  .features { display:flex; flex-wrap:wrap; justify-content:center; padding:80px 50px; text-align:center; }
-  .feature { flex:1; min-width:250px; margin:20px; }
-  .feature img { width:80px; height:80px; margin-bottom:20px; }
-  .feature h3 { margin-bottom:10px; }
-  
-  .testimonials { background:#e6f0ff; padding:80px 50px; text-align:center; }
-  .testimonial { margin:20px auto; max-width:500px; padding:20px; background:white; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
-  .testimonial p { font-style:italic; }
-  .testimonial h4 { margin-top:10px; font-weight:700; }
+    /* Colors */
+    :root {
+      --primary-gradient: linear-gradient(135deg, #8e2de2, #ff0080, #ff7e5f);
+      --accent1: #00f5a0;
+      --accent2: #ffea00;
+      --accent3: #00cfff;
+      --accent4: #ff6ec7;
+      --footer-bg: #2c003e;
+      --text-light: #fff;
+      --text-dark: #222;
+    }
 
-  .cta-section { padding:80px 50px; text-align:center; background:#1e90ff; color:white; }
-  .cta-section input[type="email"] { padding:15px; width:300px; max-width:80%; border:none; border-radius:5px; margin-right:10px; }
-  .cta-section button { padding:15px 30px; background:white; color:#1e90ff; border:none; border-radius:5px; cursor:pointer; font-weight:700; }
+    a { text-decoration: none; }
 
-  footer { background:#333; color:white; text-align:center; padding:40px 20px; }
-  footer a { color:white; margin:0 10px; text-decoration:none; }
-  
-  @media(max-width:768px) {
-    .hero { flex-direction:column; text-align:center; }
-    .hero-text h1 { font-size:36px; }
-    .features { flex-direction:column; }
-  }
-</style>
+    button {
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    section { padding: 80px 20px; }
+
+    /* Hero */
+    #hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--text-light);
+      background: var(--primary-gradient);
+      position: relative;
+      overflow: hidden;
+    }
+    #hero h1 { font-size: 3rem; margin-bottom: 20px; }
+    #hero p { font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; }
+    #hero button { background-color: var(--accent1); color: #000; }
+
+    /* About */
+    #about { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; background: #f9f9f9; }
+    #about .text { flex: 1 1 300px; padding: 20px; color: var(--text-dark); }
+    #about .icons { flex: 1 1 300px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .icon-box { text-align: center; width: 100px; }
+    .icon-box div { font-size: 2.5rem; margin-bottom: 10px; }
+
+    /* Services */
+    #services { background: #fff; text-align: center; }
+    #services h2 { margin-bottom: 40px; font-size: 2.5rem; }
+    .service-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .service-card {
+      flex: 1 1 200px;
+      background: var(--accent1);
+      color: #000;
+      border-radius: 15px;
+      padding: 30px 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+    /* Portfolio */
+    #portfolio { background: #f0f0f0; text-align: center; }
+    #portfolio h2 { margin-bottom: 40px; font-size: 2.5rem; }
+    .portfolio-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .portfolio-item { position: relative; overflow: hidden; flex: 1 1 250px; border-radius: 15px; }
+    .portfolio-item img { width: 100%; display: block; transition: transform 0.3s; }
+    .portfolio-item:hover img { transform: scale(1.1); }
+    .portfolio-caption {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .portfolio-item:hover .portfolio-caption { opacity: 1; }
+
+    /* Testimonials */
+    #testimonials { background: #fff; text-align: center; }
+    #testimonials h2 { margin-bottom: 40px; font-size: 2.5rem; }
+    .testimonial-slider { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; }
+    .testimonial-card {
+      flex: 0 0 300px;
+      background: var(--accent2);
+      padding: 30px;
+      border-radius: 20px;
+      color: #000;
+      min-height: 200px;
+    }
+
+    /* CTA Section */
+    #cta {
+      background: linear-gradient(135deg, #ff6ec7, #ffb347);
+      text-align: center;
+      color: var(--text-light);
+    }
+    #cta h2 { font-size: 2.5rem; margin-bottom: 20px; }
+    #cta button { background-color: var(--accent3); color: #000; }
+
+    /* Footer */
+    footer {
+      background: var(--footer-bg);
+      color: var(--text-light);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    footer a { color: var(--accent4); margin: 0 10px; font-size: 1.2rem; }
+    footer a:hover { color: var(--accent1); }
+    
+    /* Responsive */
+    @media(max-width:768px) {
+      #about { flex-direction: column; }
+      .service-grid, .portfolio-grid { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="logo"><strong>BrandLogo</strong></div>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Features</a>
-    <a href="#">Testimonials</a>
-    <a href="#">Contact</a>
-    <a href="#" class="cta">Get Started</a>
-  </nav>
-</header>
+  <!-- Hero Section -->
+  <section id="hero">
+    <h1>Grow Your Brand, Reach More People!</h1>
+    <p>We help businesses shine online with creative marketing strategies.</p>
+    <button>Get Started</button>
+  </section>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Grow Your Brand Online</h1>
-    <p>Reach more customers, faster, and increase your business impact.</p>
-    <button class="btn">Start Now</button>
-  </div>
-  <div class="hero-img">
-    <img src="https://via.placeholder.com/500x350.png?text=Hero+Image" alt="Hero Image">
-  </div>
-</section>
+  <!-- About Section -->
+  <section id="about">
+    <div class="text">
+      <h2>About Us</h2>
+      <p>We specialize in marketing strategies that elevate your brand, attract more customers, and increase your online presence. Creativity meets strategy for measurable results.</p>
+    </div>
+    <div class="icons">
+      <div class="icon-box">
+        <div>📈</div>
+        <p>SEO</p>
+      </div>
+      <div class="icon-box">
+        <div>📱</div>
+        <p>Social Media</p>
+      </div>
+      <div class="icon-box">
+        <div>💡</div>
+        <p>Branding</p>
+      </div>
+      <div class="icon-box">
+        <div>📣</div>
+        <p>Ads</p>
+      </div>
+    </div>
+  </section>
 
-<section class="features">
-  <div class="feature">
-    <img src="https://via.placeholder.com/80.png?text=Icon1" alt="Feature 1">
-    <h3>Easy to Use</h3>
-    <p>Our platform is intuitive and beginner-friendly.</p>
-  </div>
-  <div class="feature">
-    <img src="https://via.placeholder.com/80.png?text=Icon2" alt="Feature 2">
-    <h3>Fast Results</h3>
-    <p>Achieve your marketing goals in record time.</p>
-  </div>
-  <div class="feature">
-    <img src="https://via.placeholder.com/80.png?text=Icon3" alt="Feature 3">
-    <h3>24/7 Support</h3>
-    <p>We are always here to help you succeed.</p>
-  </div>
-</section>
+  <!-- Services Section -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service-card" style="background-color: var(--accent1);">SEO Optimization</div>
+      <div class="service-card" style="background-color: var(--accent2);">Social Media Management</div>
+      <div class="service-card" style="background-color: var(--accent3);">Branding & Design</div>
+      <div class="service-card" style="background-color: var(--accent4);">Online Advertising</div>
+    </div>
+  </section>
 
-<section class="testimonials">
-  <div class="testimonial">
-    <p>"This platform completely transformed our business. Highly recommended!"</p>
-    <h4>- Jane Doe</h4>
-  </div>
-  <div class="testimonial">
-    <p>"Amazing tools and support. Everything you need to grow online."</p>
-    <h4>- John Smith</h4>
-  </div>
-</section>
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200.png?text=Project+1" alt="Project 1">
+        <div class="portfolio-caption">Project 1</div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200.png?text=Project+2" alt="Project 2">
+        <div class="portfolio-caption">Project 2</div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://via.placeholder.com/300x200.png?text=Project+3" alt="Project 3">
+        <div class="portfolio-caption">Project 3</div>
+      </div>
+    </div>
+  </section>
 
-<section class="cta-section">
-  <h2>Join 10,000+ Satisfied Users</h2>
-  <input type="email" placeholder="Enter your email">
-  <button>Subscribe</button>
-</section>
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial-card">“Amazing service! Our traffic skyrocketed.” – Client A</div>
+      <div class="testimonial-card">“Creative and professional team, highly recommend.” – Client B</div>
+      <div class="testimonial-card">“Exceeded our expectations, great ROI.” – Client C</div>
+    </div>
+  </section>
 
-<footer>
-  <p>Follow us on:
-    <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
-  </p>
-  <p>&copy; 2026 BrandName. All rights reserved.</p>
-</footer>
+  <!-- CTA Section -->
+  <section id="cta">
+    <h2>Let’s Grow Your Business!</h2>
+    <button>Contact Us</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Follow us:</p>
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+    <a href="#">LinkedIn</a>
+    <p>&copy; 2026 Your Company</p>
+  </footer>
 
 </body>
 </html>
