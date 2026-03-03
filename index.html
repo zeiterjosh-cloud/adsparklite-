@@ -3,33 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketing Hub</title>
+  <title>Marketing Hub Enhanced</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
     body { line-height: 1.6; color: #333; }
     a { text-decoration: none; color: inherit; }
-    header { background: #1E40AF; color: #fff; padding: 60px 20px; text-align: center; }
-    header h1 { font-size: 2.5rem; margin-bottom: 20px; }
-    header p { font-size: 1.2rem; margin-bottom: 30px; }
+    header { position: relative; color: #fff; text-align: center; padding: 100px 20px; background: url('https://source.unsplash.com/1600x900/?marketing,business') center/cover no-repeat; }
+    header::after { content: ""; position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.5); }
+    header h1, header p, header .btn { position: relative; z-index: 1; }
+    header h1 { font-size: 3rem; margin-bottom: 20px; }
+    header p { font-size: 1.3rem; margin-bottom: 30px; }
     header .btn { background: #F97316; color: #fff; padding: 15px 30px; border-radius: 5px; font-weight: bold; transition: 0.3s; }
     header .btn:hover { background: #EA580C; }
+
     section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+    h2 { text-align: center; margin-bottom: 40px; color: #1E40AF; }
+
+    /* Features */
     .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .card { background: #F3F4F6; padding: 30px; border-radius: 10px; text-align: center; transition: 0.3s; }
+    .card { background: #F3F4F6; padding: 30px; border-radius: 10px; text-align: center; transition: 0.3s; cursor: pointer; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-    .card h3 { margin-bottom: 15px; color: #1E40AF; }
-    .card p { font-size: 0.95rem; color: #555; }
-    .testimonials { background: #F9FAFB; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .card img { width: 60px; margin-bottom: 15px; }
+
+    /* Testimonials */
+    .testimonials { background: #F9FAFB; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 40px 0; }
     .testimonial { background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
     .testimonial p { margin-bottom: 10px; font-style: italic; color: #555; }
     .testimonial h4 { font-weight: 600; color: #1E40AF; }
+
+    /* Portfolio */
+    .portfolio { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .portfolio-item { border-radius: 10px; overflow: hidden; transition: 0.3s; cursor: pointer; }
+    .portfolio-item img { width: 100%; display: block; }
+    .portfolio-item:hover { transform: scale(1.05); }
+
+    /* Blog */
+    .blog { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .blog-post { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .blog-post h3 { margin-bottom: 10px; color: #1E40AF; }
+    .blog-post p { font-size: 0.95rem; color: #555; }
+
+    /* FAQ */
+    .faq-item { background: #F3F4F6; margin-bottom: 10px; border-radius: 10px; }
+    .faq-question { padding: 15px 20px; cursor: pointer; font-weight: 600; }
+    .faq-answer { padding: 0 20px 15px 20px; display: none; }
+
+    /* CTA / Newsletter */
     .cta { text-align: center; background: #1E3A8A; color: #fff; padding: 50px 20px; }
     .cta input[type="email"] { padding: 15px; width: 250px; max-width: 80%; border-radius: 5px 0 0 5px; border: none; outline: none; }
     .cta button { padding: 15px 25px; border: none; background: #F97316; color: #fff; border-radius: 0 5px 5px 0; cursor: pointer; font-weight: bold; }
     .cta button:hover { background: #EA580C; }
+
+    /* Footer */
     footer { text-align: center; padding: 30px 20px; background: #111827; color: #fff; }
     footer a { color: #F97316; margin: 0 10px; }
+
+    /* Countdown */
+    #countdown { font-size: 1.5rem; margin-top: 15px; }
   </style>
 </head>
 <body>
@@ -41,25 +72,76 @@
   </header>
 
   <section id="services">
-    <h2 style="text-align:center; margin-bottom:40px;">Our Services</h2>
+    <h2>Our Services</h2>
     <div class="features">
       <div class="card">
+        <img src="https://img.icons8.com/fluency/96/social-network.png" alt="Social Media">
         <h3>Social Media Growth</h3>
         <p>Increase followers, engagement, and reach across all social platforms.</p>
       </div>
       <div class="card">
+        <img src="https://img.icons8.com/fluency/96/email.png" alt="Email Marketing">
         <h3>Email Campaigns</h3>
         <p>Automated email marketing strategies to nurture leads and boost sales.</p>
       </div>
       <div class="card">
+        <img src="https://img.icons8.com/fluency/96/analytics.png" alt="SEO & Analytics">
         <h3>SEO & Analytics</h3>
         <p>Optimize your website and track performance for better ROI.</p>
       </div>
     </div>
   </section>
 
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio">
+      <div class="portfolio-item"><img src="https://source.unsplash.com/400x300/?marketing,project1" alt="Project 1"></div>
+      <div class="portfolio-item"><img src="https://source.unsplash.com/400x300/?marketing,project2" alt="Project 2"></div>
+      <div class="portfolio-item"><img src="https://source.unsplash.com/400x300/?marketing,project3" alt="Project 3"></div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h2>Marketing Insights</h2>
+    <div class="blog">
+      <div class="blog-post">
+        <h3>5 Ways to Boost Engagement</h3>
+        <p>Learn how to grow your audience organically with smart social strategies.</p>
+      </div>
+      <div class="blog-post">
+        <h3>Email Campaign Secrets</h3>
+        <p>Discover techniques to increase open rates and conversions.</p>
+      </div>
+      <div class="blog-post">
+        <h3>SEO Tips for 2026</h3>
+        <p>Stay ahead in search rankings with these proven strategies.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-question">What services do you offer?</div>
+      <div class="faq-answer">We provide social media growth, email campaigns, SEO, analytics, and more marketing solutions.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I schedule a consultation?</div>
+      <div class="faq-answer">Yes! Contact us through the newsletter form or social links to schedule a free consultation.</div>
+    </div>
+  </section>
+
+  <section id="cta" class="cta">
+    <h2>Stay Updated with Marketing Tips!</h2>
+    <form>
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <div id="countdown">Offer ends in: <span id="timer">05:00</span></div>
+  </section>
+
   <section id="testimonials">
-    <h2 style="text-align:center; margin-bottom:40px;">Testimonials</h2>
+    <h2>Testimonials</h2>
     <div class="testimonials">
       <div class="testimonial">
         <p>"The marketing strategies doubled our engagement in just 3 months!"</p>
@@ -76,20 +158,33 @@
     </div>
   </section>
 
-  <section id="cta" class="cta">
-    <h2>Stay Updated with Marketing Tips!</h2>
-    <form>
-      <input type="email" placeholder="Enter your email" required>
-      <button type="submit">Subscribe</button>
-    </form>
-  </section>
-
   <footer>
     <p>© 2026 Marketing Hub. All rights reserved.</p>
     <div>
       <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
     </div>
   </footer>
+
+  <script>
+    // FAQ toggle
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const answer = item.querySelector('.faq-answer');
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    // Countdown timer
+    let time = 300; // 5 minutes
+    const timerEl = document.getElementById('timer');
+    setInterval(() => {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+      timerEl.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+      if(time > 0) time--;
+    }, 1000);
+  </script>
 
 </body>
 </html>
