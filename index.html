@@ -1,222 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketing Hub Pro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'GA_MEASUREMENT_ID'); // Replace with your GA ID
-  </script>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-    body { line-height:1.6; color:#333; scroll-behavior:smooth; }
-    a { text-decoration:none; color:inherit; }
-    nav { position:sticky; top:0; background:#1E40AF; color:#fff; display:flex; justify-content:space-between; align-items:center; padding:15px 30px; z-index:1000; }
-    nav .logo { font-weight:700; font-size:1.5rem; }
-    nav ul { list-style:none; display:flex; gap:20px; }
-    nav ul li a { color:#fff; transition:0.3s; }
-    nav ul li a:hover { color:#F97316; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdSpark Lite</title>
 
-    header { position:relative; color:#fff; text-align:center; padding:100px 20px; background:url('https://source.unsplash.com/1600x900/?marketing,business') center/cover no-repeat; }
-    header::after { content:""; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); }
-    header h1, header p, header .btn { position:relative; z-index:1; }
-    header h1 { font-size:3rem; margin-bottom:20px; }
-    header p { font-size:1.3rem; margin-bottom:30px; }
-    header .btn { background:#F97316; color:#fff; padding:15px 30px; border-radius:5px; font-weight:bold; transition:0.3s; }
-    header .btn:hover { background:#EA580C; }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    section { padding:60px 20px; max-width:1200px; margin:auto; }
-    h2 { text-align:center; margin-bottom:40px; color:#1E40AF; }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-    .card { background:#F3F4F6; padding:30px; border-radius:10px; text-align:center; transition:0.3s; cursor:pointer; }
-    .card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.1); }
-    .card img { width:60px; margin-bottom:15px; }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top left, #11132a, #070816 70%);
+    color: white;
+    overflow-x: hidden;
+}
 
-    .portfolio { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-    .portfolio-item { border-radius:10px; overflow:hidden; transition:0.3s; cursor:pointer; }
-    .portfolio-item img { width:100%; display:block; }
-    .portfolio-item:hover { transform:scale(1.05); }
+/* NAVBAR */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+}
 
-    .blog { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
-    .blog-post { background:#fff; padding:20px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.05); }
-    .blog-post h3 { margin-bottom:10px; color:#1E40AF; }
-    .blog-post p { font-size:0.95rem; color:#555; }
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(90deg,#00c6ff,#9f5bff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    .faq-item { background:#F3F4F6; margin-bottom:10px; border-radius:10px; }
-    .faq-question { padding:15px 20px; cursor:pointer; font-weight:600; }
-    .faq-answer { padding:0 20px 15px 20px; display:none; }
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #aaa;
+    font-weight: 500;
+    transition: .3s;
+}
 
-    .cta { text-align:center; background:#1E3A8A; color:#fff; padding:50px 20px; }
-    .cta input[type="email"] { padding:15px; width:250px; max-width:80%; border-radius:5px 0 0 5px; border:none; outline:none; }
-    .cta button { padding:15px 25px; border:none; background:#F97316; color:#fff; border-radius:0 5px 5px 0; cursor:pointer; font-weight:bold; }
-    .cta button:hover { background:#EA580C; }
-    .countdown { font-size:1.5rem; margin-top:15px; }
+nav a:hover {
+    color: white;
+}
 
-    .quiz { max-width:600px; margin:40px auto; background:#F3F4F6; padding:30px; border-radius:10px; }
-    .quiz h3 { margin-bottom:15px; color:#1E40AF; }
-    .quiz .quiz-question { margin-bottom:20px; }
-    .quiz .quiz-question label { display:block; margin-bottom:8px; cursor:pointer; }
-    .quiz button { padding:10px 20px; background:#F97316; color:#fff; border:none; border-radius:5px; cursor:pointer; }
-    .quiz button:hover { background:#EA580C; }
+.nav-buttons button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
 
-    .quotes { margin:60px auto; max-width:800px; }
-    .quote-rotator { background:#F9FAFB; padding:40px 20px; border-radius:10px; text-align:center; font-size:1.3rem; font-style:italic; transition:0.5s; }
+.login-btn {
+    background: transparent;
+    border: 1px solid #555;
+    color: white;
+}
 
-    footer { text-align:center; padding:30px 20px; background:#111827; color:#fff; }
-    footer a { color:#F97316; margin:0 10px; }
-  </style>
+.cta-btn {
+    background: linear-gradient(90deg,#00c6ff,#9f5bff);
+    color: white;
+    margin-left: 10px;
+    box-shadow: 0 0 15px rgba(159,91,255,.6);
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 8%;
+    flex-wrap: wrap;
+}
+
+.hero-text {
+    max-width: 550px;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    line-height: 1.2;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg,#00c6ff,#9f5bff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-text p {
+    margin: 20px 0;
+    color: #bbb;
+}
+
+.hero-buttons button {
+    padding: 14px 28px;
+    border-radius: 30px;
+    border: none;
+    margin-right: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: linear-gradient(90deg,#00c6ff,#9f5bff);
+    box-shadow: 0 0 20px rgba(0,198,255,.5);
+    color: white;
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 1px solid #555;
+    color: white;
+}
+
+/* HERO MOCK DASHBOARD */
+.dashboard {
+    width: 480px;
+    height: 300px;
+    background: #0f1126;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(0,198,255,.2);
+    padding: 20px;
+}
+
+.bar {
+    height: 12px;
+    background: linear-gradient(90deg,#00c6ff,#9f5bff);
+    margin: 15px 0;
+    border-radius: 10px;
+}
+
+.bar:nth-child(1){ width: 60%;}
+.bar:nth-child(2){ width: 80%;}
+.bar:nth-child(3){ width: 40%;}
+.bar:nth-child(4){ width: 70%;}
+
+/* FEATURES */
+.features {
+    padding: 80px 8%;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 30px;
+}
+
+.card {
+    background: #0f1126;
+    padding: 30px;
+    border-radius: 15px;
+    transition: .3s;
+    border: 1px solid #1d1f3b;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(159,91,255,.4);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* STATS */
+.stats {
+    padding: 60px 8%;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.stat h3 {
+    font-size: 30px;
+    background: linear-gradient(90deg,#00c6ff,#9f5bff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat p {
+    color: #aaa;
+}
+
+/* CTA SECTION */
+.cta-section {
+    margin: 80px 8%;
+    background: linear-gradient(90deg,#11132a,#0f1126);
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(159,91,255,.3);
+}
+
+.cta-section input {
+    padding: 14px;
+    width: 250px;
+    border-radius: 30px;
+    border: none;
+    margin-right: 10px;
+}
+
+.cta-section button {
+    padding: 14px 30px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(90deg,#00c6ff,#9f5bff);
+    color: white;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    padding: 40px 8%;
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .dashboard {
+        margin-top: 40px;
+    }
+}
+</style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">MarketingHub</div>
-  <ul>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#cta">Subscribe</a></li>
-    <li><a href="#quiz">Quiz</a></li>
-    <li><a href="#quotes">Quotes</a></li>
-  </ul>
-</nav>
-
 <header>
-  <h1>Boost Your Brand. Anywhere. Anytime.</h1>
-  <p>Your ultimate marketing hub for growth, engagement, and results.</p>
-  <a href="#cta" class="btn">Get Started</a>
+    <div class="logo">AdSpark Lite</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Services</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="nav-buttons">
+        <button class="login-btn">Login</button>
+        <button class="cta-btn">Get Early Access</button>
+    </div>
 </header>
 
-<section class="services">
-  <h2>Our Services</h2>
-  <div class="features">
-    <div class="card"><img src="https://img.icons8.com/fluency/96/social-network.png" alt=""><h3>Social Media Growth</h3><p>Increase followers, engagement, and reach across all social platforms.</p></div>
-    <div class="card"><img src="https://img.icons8.com/fluency/96/email.png" alt=""><h3>Email Campaigns</h3><p>Automated email marketing strategies to nurture leads and boost sales.</p></div>
-    <div class="card"><img src="https://img.icons8.com/fluency/96/analytics.png" alt=""><h3>SEO & Analytics</h3><p>Optimize your website and track performance for better ROI.</p></div>
-  </div>
-</section>
-
-<section class="portfolio">
-  <h2>Portfolio</h2>
-  <div class="portfolio-items">
-    <div class="portfolio-item"><img src="https://source.unsplash.com/400x300/?marketing,project1" alt=""></div>
-    <div class="portfolio-item"><img src="https://source.unsplash.com/400x300/?marketing,project2" alt=""></div>
-    <div class="portfolio-item"><img src="https://source.unsplash.com/400x300/?marketing,project3" alt=""></div>
-  </div>
-</section>
-
-<section class="blog">
-  <h2>Marketing Insights</h2>
-  <div class="blog-posts">
-    <div class="blog-post"><h3>5 Ways to Boost Engagement</h3><p>Learn how to grow your audience organically with smart social strategies.</p></div>
-    <div class="blog-post"><h3>Email Campaign Secrets</h3><p>Discover techniques to increase open rates and conversions.</p></div>
-    <div class="blog-post"><h3>SEO Tips for 2026</h3><p>Stay ahead in search rankings with these proven strategies.</p></div>
-  </div>
-</section>
-
-<section class="faq">
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq-item">
-    <div class="faq-question">What services do you offer?</div>
-    <div class="faq-answer">We provide social media growth, email campaigns, SEO, analytics, and more marketing solutions.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-question">Can I schedule a consultation?</div>
-    <div class="faq-answer">Yes! Contact us through the newsletter form or social links to schedule a free consultation.</div>
-  </div>
-</section>
-
-<section class="cta">
-  <h2>Stay Updated with Marketing Tips!</h2>
-  <form class="newsletter-form">
-    <input type="email" placeholder="Enter your email" required>
-    <button type="submit">Subscribe</button>
-  </form>
-  <div class="countdown">Offer ends in: <span>05:00</span></div>
-</section>
-
-<section class="quiz">
-  <h2>Marketing Quiz</h2>
-  <form class="quiz-form">
-    <div class="quiz-question">
-      <h3>1. What’s your biggest marketing goal?</h3>
-      <label><input type="radio" name="goal" value="Social Media Growth" required> Grow social media</label>
-      <label><input type="radio" name="goal" value="Website Traffic"> Increase website traffic</label>
-      <label><input type="radio" name="goal" value="Lead Generation"> Generate leads/sales</label>
+<section class="hero">
+    <div class="hero-text">
+        <h1>Build Smarter Marketing <br> <span class="gradient-text">Without a Big Team</span></h1>
+        <p>A modern marketing toolkit built by a solo founder. Designed for creators, startups, and small brands.</p>
+        <div class="hero-buttons">
+            <button class="primary-btn">Get Early Access</button>
+            <button class="secondary-btn">View Demo</button>
+        </div>
     </div>
-    <div class="quiz-question">
-      <h3>2. How often do you post content?</h3>
-      <label><input type="radio" name="frequency" value="Daily" required> Daily</label>
-      <label><input type="radio" name="frequency" value="Weekly"> Weekly</label>
-      <label><input type="radio" name="frequency" value="Rarely"> Rarely</label>
+
+    <div class="dashboard">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
-    <div class="quiz-question">
-      <h3>3. Preferred marketing channel?</h3>
-      <label><input type="radio" name="channel" value="Social Media" required> Instagram/Facebook</label>
-      <label><input type="radio" name="channel" value="Email"> Email</label>
-      <label><input type="radio" name="channel" value="Ads"> Google Ads</label>
-    </div>
-    <button type="submit">Get My Tip</button>
-    <div class="quiz-result" style="margin-top:20px; font-weight:bold;"></div>
-  </form>
 </section>
 
-<section class="quotes">
-  <h2>Marketing Insights</h2>
-  <div class="quote-rotator">"Your brand is a story unfolding across all customer touchpoints."</div>
+<section class="features">
+    <h2>Everything You Need to <span class="gradient-text">Grow Online</span></h2>
+    <div class="feature-grid">
+        <div class="card">
+            <h3>Digital Ads Tools</h3>
+            <p>Plan, track, and optimize ad performance with simple tools.</p>
+        </div>
+        <div class="card">
+            <h3>SEO Growth Tracking</h3>
+            <p>Monitor rankings and improve your visibility step-by-step.</p>
+        </div>
+        <div class="card">
+            <h3>Social Media Planner</h3>
+            <p>Organize and schedule content for consistent growth.</p>
+        </div>
+        <div class="card">
+            <h3>Analytics Dashboard</h3>
+            <p>Understand your data with clean and powerful insights.</p>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stat">
+        <h3>1</h3>
+        <p>Solo Founder</p>
+    </div>
+    <div class="stat">
+        <h3>100+</h3>
+        <p>Hours Building</p>
+    </div>
+    <div class="stat">
+        <h3>Beta</h3>
+        <p>Launching Soon</p>
+    </div>
+    <div class="stat">
+        <h3>Early</h3>
+        <p>User Access</p>
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2>Join The Early Access List</h2>
+    <p style="color:#aaa;margin:15px 0;">Be one of the first users shaping the platform.</p>
+    <input type="email" placeholder="Enter your email">
+    <button>Get Early Access</button>
 </section>
 
 <footer>
-  <p>© 2026 Marketing Hub. All rights reserved.</p>
-  <div>
-    <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
-  </div>
+    © 2026 AdSpark Lite. Built by a solo founder.
 </footer>
-
-<script>
-  // FAQ toggle
-  document.querySelectorAll('.faq-item').forEach(item=>{
-    item.querySelector('.faq-question').addEventListener('click',()=>{ 
-      const ans=item.querySelector('.faq-answer');
-      ans.style.display = ans.style.display==='block'?'none':'block';
-    });
-  });
-
-  // Countdown timer
-  let time = 300;
-  const countdownEl = document.querySelector('.countdown span');
-  setInterval(()=>{
-    const minutes=Math.floor(time/60);
-    const seconds=time%60;
-    countdownEl.textContent=`${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
-    if(time>0) time--;
-  },1000);
-
-  // Quote Rotator
-  const quotes = [
-    "Your brand is a story unfolding across all customer touchpoints.",
-    "Content is fire, social media is gasoline.",
-    "Marketing without data is like driving with your eyes closed.",
-    "Engage, don’t just advertise.",
-    "The best marketing doesn’t feel like marketing."
-  ];
-  const quoteEl = document.querySelector('.quote-rotator');
-  let currentQuote = 0;
-  setInterval(()=>{
-    currentQuote = (currentQuote + 1) % quotes.length;
-    quoteEl.style.opacity = 0;
-    setTimeout(()=>{
-      quoteEl.textContent = quotes[currentQuote];
-      quoteEl.style.opacity = 1;
-    },500);
-  },5000);
-</script>
 
 </body>
 </html>
