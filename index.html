@@ -1,148 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketing Website</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset & basic styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
-        a { text-decoration: none; color: inherit; }
-        img { max-width: 100%; display: block; }
-
-        /* Header */
-        header { position: sticky; top: 0; background: #fff; padding: 20px 50px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; z-index: 100; }
-        header nav a { margin-left: 20px; font-weight: 600; color: #007BFF; }
-        header nav a:hover { color: #6C63FF; }
-
-        /* Hero */
-        .hero { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100vh; background: linear-gradient(135deg, #007BFF, #6C63FF); color: #fff; padding: 0 20px; }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; }
-        .hero button { background: #FFC107; color: #333; border: none; padding: 15px 30px; font-size: 1rem; font-weight: 600; border-radius: 5px; cursor: pointer; transition: all 0.3s ease; }
-        .hero button:hover { transform: scale(1.05); background: #ffb300; }
-
-        /* Sections */
-        section { padding: 80px 50px; max-width: 1200px; margin: 0 auto; }
-        h2 { font-size: 2rem; text-align: center; margin-bottom: 50px; color: #007BFF; }
-
-        /* About */
-        .about p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; text-align: center; }
-
-        /* Services */
-        .services { display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; }
-        .service { background: #fff; border-radius: 10px; padding: 30px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); flex: 1 1 250px; transition: transform 0.3s ease; }
-        .service:hover { transform: translateY(-10px); }
-        .service h3 { color: #6C63FF; margin-bottom: 15px; }
-        .service p { font-size: 1rem; color: #555; }
-
-        /* Testimonials */
-        .testimonials { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-        .testimonial { background: #fff; border-radius: 10px; padding: 30px; max-width: 300px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .testimonial p { font-style: italic; margin-bottom: 15px; }
-        .testimonial h4 { color: #007BFF; }
-
-        /* Contact */
-        .contact form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-        .contact input, .contact textarea { padding: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; width: 100%; }
-        .contact button { background: #6C63FF; color: #fff; border: none; padding: 15px; font-size: 1rem; font-weight: 600; border-radius: 5px; cursor: pointer; transition: all 0.3s ease; }
-        .contact button:hover { background: #5a52d1; }
-
-        /* Footer */
-        footer { background: #007BFF; color: #fff; text-align: center; padding: 20px; }
-        footer a { color: #FFC107; margin: 0 10px; font-weight: 600; }
-        footer a:hover { color: #fff; }
-
-        /* Responsive */
-        @media(max-width:768px){
-            header { flex-direction: column; }
-            .services, .testimonials { flex-direction: column; align-items: center; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { line-height: 1.6; color: #333; }
+    a { text-decoration: none; color: inherit; }
+    header { background: #1E40AF; color: #fff; padding: 60px 20px; text-align: center; }
+    header h1 { font-size: 2.5rem; margin-bottom: 20px; }
+    header p { font-size: 1.2rem; margin-bottom: 30px; }
+    header .btn { background: #F97316; color: #fff; padding: 15px 30px; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+    header .btn:hover { background: #EA580C; }
+    section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .card { background: #F3F4F6; padding: 30px; border-radius: 10px; text-align: center; transition: 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .card h3 { margin-bottom: 15px; color: #1E40AF; }
+    .card p { font-size: 0.95rem; color: #555; }
+    .testimonials { background: #F9FAFB; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .testimonial { background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .testimonial p { margin-bottom: 10px; font-style: italic; color: #555; }
+    .testimonial h4 { font-weight: 600; color: #1E40AF; }
+    .cta { text-align: center; background: #1E3A8A; color: #fff; padding: 50px 20px; }
+    .cta input[type="email"] { padding: 15px; width: 250px; max-width: 80%; border-radius: 5px 0 0 5px; border: none; outline: none; }
+    .cta button { padding: 15px 25px; border: none; background: #F97316; color: #fff; border-radius: 0 5px 5px 0; cursor: pointer; font-weight: bold; }
+    .cta button:hover { background: #EA580C; }
+    footer { text-align: center; padding: 30px 20px; background: #111827; color: #fff; }
+    footer a { color: #F97316; margin: 0 10px; }
+  </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo"><h2 style="color:#007BFF;">MyBrand</h2></div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+  <header>
+    <h1>Boost Your Brand. Anywhere. Anytime.</h1>
+    <p>Your ultimate marketing hub for growth, engagement, and results.</p>
+    <a href="#cta" class="btn">Get Started</a>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Grow Your Business Today</h1>
-        <p>Professional marketing solutions to help you reach more customers and increase sales.</p>
-        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Get Started</button>
-    </section>
+  <section id="services">
+    <h2 style="text-align:center; margin-bottom:40px;">Our Services</h2>
+    <div class="features">
+      <div class="card">
+        <h3>Social Media Growth</h3>
+        <p>Increase followers, engagement, and reach across all social platforms.</p>
+      </div>
+      <div class="card">
+        <h3>Email Campaigns</h3>
+        <p>Automated email marketing strategies to nurture leads and boost sales.</p>
+      </div>
+      <div class="card">
+        <h3>SEO & Analytics</h3>
+        <p>Optimize your website and track performance for better ROI.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About Us</h2>
-        <p>We specialize in providing innovative marketing strategies that drive results. From social media campaigns to content creation, our team helps your brand shine and reach the right audience.</p>
-    </section>
+  <section id="testimonials">
+    <h2 style="text-align:center; margin-bottom:40px;">Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"The marketing strategies doubled our engagement in just 3 months!"</p>
+        <h4>— Alex P.</h4>
+      </div>
+      <div class="testimonial">
+        <p>"Professional, fast, and extremely effective. Highly recommended."</p>
+        <h4>— Maria K.</h4>
+      </div>
+      <div class="testimonial">
+        <p>"Our brand visibility has never been better. Incredible results."</p>
+        <h4>— Liam R.</h4>
+      </div>
+    </div>
+  </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2>Our Services</h2>
-        <div class="services">
-            <div class="service">
-                <h3>Social Media Marketing</h3>
-                <p>Boost your online presence and engage your audience across all social platforms.</p>
-            </div>
-            <div class="service">
-                <h3>Content Creation</h3>
-                <p>High-quality content that captures attention and converts leads into customers.</p>
-            </div>
-            <div class="service">
-                <h3>SEO Optimization</h3>
-                <p>Improve your search engine rankings and drive more organic traffic to your website.</p>
-            </div>
-        </div>
-    </section>
+  <section id="cta" class="cta">
+    <h2>Stay Updated with Marketing Tips!</h2>
+    <form>
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <h2>What Our Clients Say</h2>
-        <div class="testimonials">
-            <div class="testimonial">
-                <p>"Amazing service! Our traffic and sales increased in just a few weeks."</p>
-                <h4>- Alex R.</h4>
-            </div>
-            <div class="testimonial">
-                <p>"Professional, creative, and results-driven. Highly recommended!"</p>
-                <h4>- Sarah M.</h4>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 MyBrand. All rights reserved.</p>
-        <p>
-            <a href="#">Facebook</a> | 
-            <a href="#">Twitter</a> | 
-            <a href="#">Instagram</a>
-        </p>
-    </footer>
+  <footer>
+    <p>© 2026 Marketing Hub. All rights reserved.</p>
+    <div>
+      <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+    </div>
+  </footer>
 
 </body>
 </html>
