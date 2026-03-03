@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Magnetiq</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo">MAGNETIQ</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="platform.html">Platform</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="login.html" class="btn-outline">Login</a>
+    <a href="login.html" class="btn-primary">Get Started</a>
+  </div>
+</div>
+
+<div style="padding:120px 8%; display:flex; justify-content:center;">
+  
+  <div style="background:rgba(255,255,255,0.05); padding:50px; border-radius:20px; width:350px; backdrop-filter:blur(15px);">
+    
+    <h2 style="margin-bottom:30px; text-align:center;">Login to Magnetiq</h2>
+
+    <form onsubmit="return fakeLogin(event)">
+      
+      <input 
+        type="email" 
+        placeholder="Email" 
+        required
+        style="width:100%; padding:12px; border-radius:10px; border:none; margin-bottom:20px;"
+      >
+
+      <input 
+        type="password" 
+        placeholder="Password" 
+        required
+        style="width:100%; padding:12px; border-radius:10px; border:none; margin-bottom:25px;"
+      >
+
+      <button 
+        type="submit" 
+        class="btn-primary"
+        style="width:100%;"
+      >
+        Login
+      </button>
+
+    </form>
+
+    <p style="margin-top:20px; font-size:14px; opacity:0.7; text-align:center;">
+      Don't have an account? <a href="#" style="color:#00c2ff;">Sign up</a>
+    </p>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  © 2026 Magnetiq. All rights reserved.
+</div>
+
+<script>
+function fakeLogin(event) {
+  event.preventDefault();
+  alert("Login system coming soon.");
+  return false;
+}
+</script>
+
+</body>
+</html>
