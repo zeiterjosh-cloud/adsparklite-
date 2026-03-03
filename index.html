@@ -330,6 +330,46 @@ footer {
   <div>© 2026 AdSpark Lite. All rights reserved.</div>
   <div>Twitter • Instagram • LinkedIn</div>
 </footer>
+<script>
 
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+// Scroll buttons
+document.querySelectorAll('.primary-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const ctaSection = document.querySelector('.cta');
+    ctaSection.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// View Demo button
+document.querySelector('.secondary-btn')?.addEventListener('click', function() {
+  document.querySelector('.features').scrollIntoView({
+    behavior: 'smooth'
+  });
+});
+
+// Email submission
+const emailBtn = document.querySelector('.cta button');
+const emailInput = document.querySelector('.cta input');
+
+emailBtn.addEventListener('click', function() {
+  if(emailInput.value.trim() === "") {
+    alert("Please enter your email.");
+  } else {
+    alert("You're in! 🚀 We'll be in touch soon.");
+    emailInput.value = "";
+  }
+});
+
+</script>
 </body>
 </html>
