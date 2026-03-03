@@ -1,376 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AdSpark Lite</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
-
-body {
-  background: radial-gradient(circle at top left, #111827, #0b0f1a 60%);
-  color: white;
-  overflow-x: hidden;
-}
-
-/* NAVBAR */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px 8%;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: 700;
-}
-
-.logo span {
-  color: #8b5cf6;
-}
-
-.nav-links {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-}
-
-.nav-links a {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.nav-links a:hover {
-  color: white;
-}
-
-.login-btn {
-  padding: 8px 18px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.08);
-}
-
-.primary-btn {
-  padding: 10px 22px;
-  border-radius: 25px;
-  background: linear-gradient(90deg, #6366f1, #ec4899);
-  border: none;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.primary-btn:hover {
-  box-shadow: 0 0 20px #8b5cf6;
-  transform: translateY(-2px);
-}
-
-/* HERO */
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 100px 8%;
-}
-
-.hero-text {
-  max-width: 550px;
-}
-
-.hero h1 {
-  font-size: 56px;
-  font-weight: 800;
-  line-height: 1.1;
-}
-
-.hero h1 span {
-  background: linear-gradient(90deg, #6366f1, #ec4899);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-  margin: 25px 0;
-  color: #b0b0b0;
-  line-height: 1.6;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 15px;
-  margin-top: 25px;
-}
-
-.secondary-btn {
-  padding: 10px 22px;
-  border-radius: 25px;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: white;
-  cursor: pointer;
-}
-
-/* MOCK DASHBOARD */
-.dashboard {
-  width: 500px;
-  height: 300px;
-  background: linear-gradient(145deg, #141b2d, #0f172a);
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(139,92,246,0.4);
-  position: relative;
-}
-
-.dashboard::after {
-  content: "";
-  position: absolute;
-  width: 120%;
-  height: 120%;
-  top: -10%;
-  left: -10%;
-  background: radial-gradient(circle, rgba(139,92,246,0.2), transparent 70%);
-  z-index: -1;
-}
-
-/* FEATURES */
-.features {
-  padding: 80px 8%;
-  text-align: center;
-}
-
-.features h2 {
-  font-size: 36px;
-  margin-bottom: 50px;
-}
-
-.features h2 span {
-  color: #8b5cf6;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 25px;
-}
-
-.feature-card {
-  background: linear-gradient(145deg, #141b2d, #0f172a);
-  padding: 30px;
-  border-radius: 15px;
-  transition: 0.3s;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px rgba(139,92,246,0.4);
-}
-
-.feature-card h3 {
-  margin-bottom: 15px;
-}
-
-/* STATS */
-.stats {
-  display: flex;
-  justify-content: space-around;
-  padding: 60px 8%;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.stat {
-  text-align: center;
-}
-
-.stat h3 {
-  font-size: 32px;
-  color: #8b5cf6;
-}
-
-/* CTA */
-.cta {
-  margin: 80px 8%;
-  padding: 50px;
-  border-radius: 20px;
-  background: linear-gradient(145deg, #141b2d, #0f172a);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cta input {
-  padding: 12px 20px;
-  width: 250px;
-  border-radius: 25px;
-  border: none;
-  margin-right: 15px;
-  outline: none;
-}
-
-/* FOOTER */
-footer {
-  padding: 40px 8%;
-  display: flex;
-  justify-content: space-between;
-  color: #888;
-  font-size: 14px;
-}
-
-@media(max-width: 900px){
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .dashboard {
-    margin-top: 50px;
-    width: 100%;
-  }
-
-  .cta {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-}
-</style>
+  <title>Magnetiq</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<nav>
-  <div class="logo">AdSpark <span>Lite</span></div>
+<div class="navbar">
+  <div class="logo">MAGNETIQ</div>
   <div class="nav-links">
-    <a href="#">Home</a>
-   <a href="#features">Features</a>
-    <a href="#">Services</a>
-    <a href="#">Pricing</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-    <a class="login-btn" href="#">Login</a>
-    <button class="primary-btn">Get Started →</button>
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="platform.html">Platform</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="login.html" class="btn-outline">Login</a>
+    <a href="login.html" class="btn-primary">Get Started</a>
   </div>
-</nav>
+</div>
 
 <section class="hero">
   <div class="hero-text">
-    <h1>Grow Your Brand With <span>Smart Marketing</span></h1>
-    <p>Boost your business with powerful strategies, social media, SEO & ads — all in one place.</p>
+    <h1>Engineer Predictable Growth</h1>
+    <p>Magnetiq transforms audience behavior into clear strategic direction so you always know what to do next.</p>
     <div class="hero-buttons">
-      <button class="primary-btn">Get Started Free →</button>
-      <button class="secondary-btn">View Demo</button>
+      <a href="login.html" class="btn-primary">Start Free</a>
+      <a href="features.html" class="btn-outline">View Platform</a>
     </div>
   </div>
-  <div class="dashboard"></div>
-</section>
-<section class="features" id="features">
-<section class="cta" id="cta">
-  <h2>Everything You Need to <span>Succeed Online</span></h2>
-  <div class="feature-grid">
-    <div class="feature-card">
-      <h3>Digital Advertising</h3>
-      <p>Run high-converting ads and scale your growth fast.</p>
-    </div>
-    <div class="feature-card">
-      <h3>SEO & Growth</h3>
-      <p>Rank higher and get organic traffic consistently.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Social Media Marketing</h3>
-      <p>Engage your audience and build authority.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Analytics & Reports</h3>
-      <p>Track success with powerful real-time insights.</p>
-    </div>
+
+  <div class="mockup">
+    <h3>Today's Focus</h3>
+    <div class="stat">Engagement Spike +18%</div>
+    <div class="stat">Retention Drop at 12s</div>
+    <div class="stat">Loyalty Cluster Growing</div>
   </div>
 </section>
 
-<section class="features" id="features">
-<section class="cta" id="cta">
-  <div class="stat">
-    <h3>500+</h3>
-    <p>Projects Completed</p>
-  </div>
-  <div class="stat">
-    <h3>98%</h3>
-    <p>Client Satisfaction</p>
-  </div>
-  <div class="stat">
-    <h3>2M+</h3>
-    <p>Leads Generated</p>
-  </div>
-  <div class="stat">
-    <h3>150+</h3>
-    <p>Happy Clients</p>
+<section class="features">
+  <h2>Everything You Need to Scale</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h3>Audience Intelligence</h3>
+      <p>Understand emotional behavior across platforms.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Predictive Modeling</h3>
+      <p>Forecast growth before you execute.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Growth Playbooks</h3>
+      <p>Turn insights into action instantly.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Signal Tracking</h3>
+      <p>Measure momentum in real time.</p>
+    </div>
   </div>
 </section>
 
 <section class="cta">
-  <div>
-    <h2>Ready to Elevate Your Business?</h2>
-    <p style="color:#aaa;">Start your marketing journey today — it's free.</p>
-  </div>
-  <div>
-    <input type="email" placeholder="Enter your email">
-    <button class="primary-btn">Get Started →</button>
-  </div>
+  <h2>Ready to Take Control?</h2>
+  <br>
+  <input type="email" placeholder="Enter your email">
+  <button class="btn-primary">Get Started</button>
 </section>
 
-<footer>
-  <div>© 2026 AdSpark Lite. All rights reserved.</div>
-  <div>Twitter • Instagram • LinkedIn</div>
-</footer>
-<script>
+<div class="footer">
+  © 2026 Magnetiq. All rights reserved.
+</div>
 
-// Smooth scroll for nav links
-document.querySelectorAll('a[<a href="#features">Features</a>"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
-  });
-});
-
-// Scroll buttons
-document.querySelectorAll('.primary-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const ctaSection = document.querySelector('.cta');
-    ctaSection.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-// View Demo button
-document.querySelector('.secondary-btn')?.addEventListener('click', function() {
-  document.querySelector('.features').scrollIntoView({
-    behavior: 'smooth'
-  });
-});
-
-// Email submission
-const emailBtn = document.querySelector('.cta button');
-const emailInput = document.querySelector('.cta input');
-
-emailBtn.addEventListener('click', function() {
-  if(emailInput.value.trim() === "") {
-    alert("Please enter your email.");
-  } else {
-    alert("You're in! 🚀 We'll be in touch soon.");
-    emailInput.value = "";
-  }
-});
-
-</script>
 </body>
 </html>
