@@ -1,74 +1,279 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Magnetiq</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowthBoost | Marketing That Converts</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f8fafc;
+color:#1e293b;
+scroll-behavior:smooth;
+}
+
+/* HEADER */
+header{
+position:fixed;
+width:100%;
+background:white;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 3px 10px rgba(0,0,0,0.05);
+z-index:1000;
+}
+
+.logo{
+font-weight:bold;
+font-size:20px;
+color:#2563eb;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#1e293b;
+font-weight:600;
+}
+
+nav a:hover{
+color:#2563eb;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 8%;
+background:linear-gradient(135deg,#2563eb,#14b8a6);
+color:white;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:20px;
+}
+
+.hero p{
+max-width:600px;
+margin-bottom:30px;
+}
+
+.btn{
+padding:12px 28px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.btn-primary{
+background:white;
+color:#2563eb;
+}
+
+.btn-primary:hover{
+background:#f1f5f9;
+}
+
+/* SECTIONS */
+section{
+padding:80px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:32px;
+margin-bottom:50px;
+}
+
+/* FEATURES */
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+/* TESTIMONIALS */
+.testimonials{
+background:#e2e8f0;
+text-align:center;
+}
+
+.testimonial{
+max-width:600px;
+margin:auto;
+}
+
+/* PRICING */
+.pricing{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.price-card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:center;
+}
+
+.price{
+font-size:36px;
+margin:15px 0;
+}
+
+/* CONTACT */
+.contact form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+}
+
+input, textarea{
+padding:12px;
+margin-bottom:15px;
+border-radius:6px;
+border:1px solid #cbd5e1;
+}
+
+/* FOOTER */
+footer{
+background:#1e293b;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.hero h1{
+font-size:32px;
+}
+}
+</style>
 </head>
+
 <body>
 
-<div class="navbar">
-  <div class="logo">MAGNETIQ</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="features.html">Features</a>
-    <a href="platform.html">Platform</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="about.html">About</a>
-    <a href="login.html" class="btn-outline">Login</a>
-    <a href="login.html" class="btn-primary">Get Started</a>
-  </div>
-</div>
+<header>
+<div class="logo">GrowthBoost</div>
+<nav>
+<a href="#features">Features</a>
+<a href="#pricing">Pricing</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
 
 <section class="hero">
-  <div class="hero-text">
-    <h1>Engineer Predictable Growth</h1>
-    <p>Magnetiq transforms audience behavior into clear strategic direction so you always know what to do next.</p>
-    <div class="hero-buttons">
-      <a href="login.html" class="btn-primary">Start Free</a>
-      <a href="features.html" class="btn-outline">View Platform</a>
-    </div>
-  </div>
-
-  <div class="mockup">
-    <h3>Today's Focus</h3>
-    <div class="stat">Engagement Spike +18%</div>
-    <div class="stat">Retention Drop at 12s</div>
-    <div class="stat">Loyalty Cluster Growing</div>
-  </div>
+<h1>Scale Your Business Faster</h1>
+<p>We help brands increase traffic, generate leads, and maximize conversions with powerful marketing strategies.</p>
+<button class="btn btn-primary" onclick="scrollToSection('contact')">Get Started</button>
 </section>
 
-<section class="features">
-  <h2>Everything You Need to Scale</h2>
-  <div class="feature-grid">
-    <div class="feature-card">
-      <h3>Audience Intelligence</h3>
-      <p>Understand emotional behavior across platforms.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Predictive Modeling</h3>
-      <p>Forecast growth before you execute.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Growth Playbooks</h3>
-      <p>Turn insights into action instantly.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Signal Tracking</h3>
-      <p>Measure momentum in real time.</p>
-    </div>
-  </div>
-</section>
-
-<section class="cta">
-  <h2>Ready to Take Control?</h2>
-  <br>
-  <input type="email" placeholder="Enter your email">
-  <button class="btn-primary">Get Started</button>
-</section>
-
-<div class="footer">
-  © 2026 Magnetiq. All rights reserved.
+<section id="features">
+<h2 class="section-title">Why Choose Us</h2>
+<div class="features">
+<div class="card">
+<h3>Data-Driven Strategy</h3>
+<p>We use analytics and insights to optimize every campaign.</p>
 </div>
+<div class="card">
+<h3>Conversion Optimization</h3>
+<p>Turn visitors into loyal customers with proven techniques.</p>
+</div>
+<div class="card">
+<h3>Brand Growth</h3>
+<p>Build awareness and authority in your industry.</p>
+</div>
+</div>
+</section>
+
+<section class="testimonials">
+<h2 class="section-title">What Clients Say</h2>
+<div class="testimonial">
+<p>"Our revenue doubled in 3 months thanks to GrowthBoost!"</p>
+<strong>- Happy Client</strong>
+</div>
+</section>
+
+<section id="pricing">
+<h2 class="section-title">Pricing Plans</h2>
+<div class="pricing">
+<div class="price-card">
+<h3>Starter</h3>
+<div class="price">$299/mo</div>
+<p>Basic Marketing Strategy</p>
+<button class="btn btn-primary">Choose Plan</button>
+</div>
+<div class="price-card">
+<h3>Professional</h3>
+<div class="price">$799/mo</div>
+<p>Full Campaign Management</p>
+<button class="btn btn-primary">Choose Plan</button>
+</div>
+<div class="price-card">
+<h3>Enterprise</h3>
+<div class="price">Custom</div>
+<p>Complete Growth Package</p>
+<button class="btn btn-primary">Contact Us</button>
+</div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<h2 class="section-title">Get In Touch</h2>
+<form onsubmit="submitForm(event)">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="5" placeholder="Your Message" required></textarea>
+<button class="btn btn-primary">Send Message</button>
+</form>
+</section>
+
+<footer>
+© 2026 GrowthBoost. All rights reserved.
+</footer>
+
+<script>
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function submitForm(e){
+e.preventDefault();
+alert("Thank you! We will contact you soon.");
+e.target.reset();
+}
+</script>
 
 </body>
 </html>
